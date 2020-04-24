@@ -132,7 +132,7 @@
       "examples": [
         {
           "title": "Error-Response",
-          "content": " {\n     \"messages\": {\n         \"error\": \"Failed to Save\"\n     }\n}",
+          "content": " {\n     \"messages\": {\n         \"error\": \"Failed to Update\"\n     }\n}",
           "type": "json"
         }
       ],
