@@ -92,17 +92,17 @@
       },
       "examples": [
         {
-          "title": "Example: Update both 'name' and 'description'",
+          "title": "Example 1: Update both 'name' and 'description'",
           "content": "{\n    \"name\": \"Customer 1 - updated\",\n    \"description\": \"Customer 1 Description - updated\",\n}",
           "type": "Json"
         },
         {
-          "title": "Example: Update 'name'.",
+          "title": "Example 2: Update 'name'.",
           "content": "{\n    \"name\": \"Customer 1 - updated\",\n}",
           "type": "Json"
         },
         {
-          "title": "Example: Update 'description'.",
+          "title": "Example 3: Update 'description'.",
           "content": "{\n    \"description\": \"Customer 1 Description - updated\",\n}",
           "type": "Json"
         }
