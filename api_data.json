@@ -471,7 +471,7 @@
   {
     "type": "delete",
     "url": "/api/projects/:id/activities",
-    "title": "Projects - DELETE",
+    "title": "Project Activities - DELETE",
     "description": "<p>Delete Projects Activities by sending an array of ids</p>",
     "version": "1.0.0",
     "name": "DeleteProjectActivities",
@@ -1514,6 +1514,233 @@
       }
     },
     "filename": "orangehrmITWPTimePlugin/api/ITWPTimeProjectActivityEndpoint.php",
+    "groupTitle": "Time"
+  },
+  {
+    "type": "post",
+    "url": "/api/project/:projectId/members",
+    "title": "Project Members - POST",
+    "description": "<p>Add Project Members</p>",
+    "version": "1.0.0",
+    "name": "addProjectMembers",
+    "group": "Time",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "projectId",
+            "description": "<p>Project Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Json",
+            "optional": false,
+            "field": "Object",
+            "description": "<p>Object with employee numbers to add as project members</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Parameter",
+          "content": "{\n     \"$memberIds\": [1, 2, 3],\n}",
+          "type": "Json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Json",
+            "optional": false,
+            "field": "Object",
+            "description": "<p>Object with inserted project member data</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response",
+          "content": " {\n     \"messages\": {\n         \"success\": \"Successfully Saved\"\n     }\n}",
+          "type": "Json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "optional": false,
+            "field": "BadRequest",
+            "description": "<p>Invalid data</p>"
+          }
+        ],
+        "403": [
+          {
+            "group": "403",
+            "optional": false,
+            "field": "Forbidden",
+            "description": "<p>Permission Required</p>"
+          }
+        ]
+      }
+    },
+    "filename": "orangehrmITWPTimePlugin/api/ITWPTimeProjectMembersEndpoint.php",
+    "groupTitle": "Time"
+  },
+  {
+    "type": "delete",
+    "url": "/api/project/:projectId/members",
+    "title": "Project Members - DELETE",
+    "description": "<p>Delete project members by project id and member ids</p>",
+    "version": "1.0.0",
+    "name": "deleteProjectMembers",
+    "group": "Time",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Json",
+            "optional": false,
+            "field": "Object",
+            "description": "<p>object which contains employee numbers ids of members to be deleted</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Parameter Object-Example:",
+          "content": "{\n        'memberIds' : [1, 2, 3],\n}",
+          "type": "Json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Json",
+            "optional": false,
+            "field": "Object",
+            "description": "<p>Object with confirmation of success</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response",
+          "content": "{\n    \"data\":\n        {\n            \"success\":true\n        }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "optional": false,
+            "field": "BadRequest",
+            "description": "<p>Invalid data</p>"
+          }
+        ],
+        "403": [
+          {
+            "group": "403",
+            "optional": false,
+            "field": "Forbidden",
+            "description": "<p>Unauthorized</p>"
+          }
+        ]
+      }
+    },
+    "filename": "orangehrmITWPTimePlugin/api/ITWPTimeProjectMembersEndpoint.php",
+    "groupTitle": "Time"
+  },
+  {
+    "type": "get",
+    "url": "/api/project/:projectId/members?limit=:limit&offset=:offset",
+    "title": "Project Members - GET",
+    "description": "<p>Get Project Members for the project</p>",
+    "version": "1.0.0",
+    "name": "projectMembers",
+    "group": "Time",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "projectId",
+            "description": "<p>Project Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Starting point of the searched project member list</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>Limit of the data set returned</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Json",
+            "optional": false,
+            "field": "Object",
+            "description": "<p>Object containing project member details which will be feed to the list</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n     \"data\": [\n         {\n             \"empNumber\": \"1\",\n             \"empName\": \"Britney T Reed\",\n             \"jobTitle\": \"SE\",\n             \"subUnit\": \"Department B\",\n             \"location\": \"Colombo\",\n         },\n         {\n             \"empNumber\": \"2\",\n             \"empName\": \"Abbie Campbell\",\n             \"jobTitle\": \"ASE\",\n             \"subUnit\": \"Department A\",\n             \"location\": \"New York\",\n         },\n         {\n             \"empNumber\": \"3\",\n             \"name\": \"Adam Oliver\",\n             \"jobTitle\": \"TL\",\n             \"subUnit\": \"Department A\",\n             \"location\": \"London\"\n         }\n     ],\n     \"meta\": {\n         totalCount: 3,\n     }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "optional": false,
+            "field": "BadRequest",
+            "description": "<p>Invalid data</p>"
+          }
+        ],
+        "403": [
+          {
+            "group": "403",
+            "optional": false,
+            "field": "Forbidden",
+            "description": "<p>No view permission for Time Project data group</p>"
+          }
+        ]
+      }
+    },
+    "filename": "orangehrmITWPTimePlugin/api/ITWPTimeProjectMembersEndpoint.php",
     "groupTitle": "Time"
   }
 ]
